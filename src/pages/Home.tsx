@@ -3,11 +3,13 @@ import SearchComp from "../components/SearchComp";
 import axios from "axios";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
+  addFavorites,
   fetchFail,
   fetchStart,
   getSuccessProduct,
 } from "../features/productsSlice";
-import { EventFunc, Products } from "../models/models";
+import { EventFunc, Product, Products } from "../models/models";
+import Card from "../components/Card";
 
 //* model.ts Global
 // export interface Products {
@@ -20,7 +22,7 @@ import { EventFunc, Products } from "../models/models";
 const Home = () => {
   const [search, setSearch] = useState("");
   const dispatch = useAppDispatch();
-  const { loading, error, productsList } = useAppSelector(
+  const { loading, error, productsList,favorites } = useAppSelector(
     (state) => state.products
   );
 
@@ -50,6 +52,12 @@ const Home = () => {
     setSearch(e.target.value);
   };
 
+  const handleAdd = (product:Product) => {
+    if(favorites.filter(item => item.id === product.id).length === 0){
+      dispatch(addFavorites(product))
+    }
+  }
+
   return (
     <div>
       <SearchComp handleChange={handleChange} />
@@ -66,9 +74,9 @@ const Home = () => {
           </p>
         </div>
       ) : (
-        <div>
+        <div className="flex justify-center items-center flex-wrap gap-5 p-5">
           {productsList.map((item) => (
-            <p>{item.title}</p>
+            <Card key={item.id} text="Add to favorites" item={item} handleFunc={handleAdd} />
           ))}
         </div>
       )}
