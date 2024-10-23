@@ -1,19 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { Product } from "../models/models";
 
-export interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
+
+//* models.ts Global
+// export interface Product {
+//   id: number;
+//   title: string;
+//   description: string;
+//   price: number;
+//   discountPercentage: number;
+//   rating: number;
+//   stock: number;
+//   brand: string;
+//   category: string;
+//   thumbnail: string;
+//   images: string[];
+// }
 
 // Define a type for the slice state
 interface ProductsState {
