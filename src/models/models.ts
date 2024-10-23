@@ -23,4 +23,6 @@ export interface Products {
     limit: number;
   }
 
+  export type VoidFunc = (product:Product)=> void
+
   

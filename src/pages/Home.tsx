@@ -9,6 +9,7 @@ import {
   getSuccessProduct,
 } from "../features/productsSlice";
 import { EventFunc, Product, Products } from "../models/models";
+// import { VoidFunc } from "../models/models";
 import Card from "../components/Card";
 
 //* model.ts Global
@@ -57,6 +58,12 @@ const Home = () => {
       dispatch(addFavorites(product))
     }
   }
+
+  // const handleAdd:VoidFunc = (product) => {
+  //   if(favorites.filter(item => item.id === product.id).length === 0){
+  //     dispatch(addFavorites(product))
+  //   }
+  // }
 
   return (
     <div>

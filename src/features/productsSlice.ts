@@ -62,7 +62,7 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { fetchStart, getSuccessProduct, addFavorites, fetchFail } =
+export const { fetchStart, getSuccessProduct, addFavorites, fetchFail,removeFavorites } =
   productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;
