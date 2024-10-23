@@ -3,9 +3,10 @@ import SearchComp from "../components/SearchComp";
 import axios from "axios";
 import { useAppDispatch } from "../app/hooks";
 import { fetchFail, fetchStart, getSuccessProduct } from "../features/productsSlice";
+import { EventFunc } from "../models/models";
 
 export interface Products {
-  products: Products[];
+  products: Product[];
   total: number;
   skip: number;
   limit: number;
@@ -33,9 +34,18 @@ const Home = () => {
     getData()
   },[search])
 
+  // const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  //  setSearch(e.target.value)
+
+  // }
+
+  const handleChange:EventFunc = (e)=>{
+    setSearch(e.target.value)
+  }
+
   return (
     <div>
-      <SearchComp />
+      <SearchComp handleChange={handleChange} />
     </div>
   );
 };
