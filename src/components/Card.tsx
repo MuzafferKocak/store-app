@@ -23,7 +23,7 @@ const Card:React.FC<ICard> = ({item,text,handleFunc}) => {
 
       <div className='flex justify-between items-center bg-zinc-600 p-3'>
         <h2 className='text-slate-200 font-bold'>€{item.price}</h2>
-        <button className='text-slate-200 font-bold p-1 bg-slate-500 rounded-lg animate-pulse hover:animate-none' onClick={()=>handleFunc(item)}>{text}</button>
+        <button className='text-slate-200 font-bold p-2 bg-slate-500 rounded-lg animate-pulse hover:animate-none' onClick={()=>handleFunc(item)}>{text}</button>
 
       </div>
     </div>

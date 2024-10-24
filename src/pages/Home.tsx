@@ -33,7 +33,7 @@ const Home = () => {
       const { data } = await axios.get<Products>(
         `https://dummyjson.com/products/search?q=${search}`
       );
-      console.log(data.products);
+      // console.log(data.products);
       dispatch(getSuccessProduct(data.products));
     } catch (error) {
       dispatch(fetchFail());
