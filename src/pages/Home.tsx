@@ -11,6 +11,7 @@ import {
 import { EventFunc, Product, Products } from "../models/models";
 // import { VoidFunc } from "../models/models";
 import Card from "../components/Card";
+import { toastSuccessNotify, toastWarnNotify } from "../helper/ToastNotify";
 
 //* model.ts Global
 // export interface Products {
@@ -23,7 +24,7 @@ import Card from "../components/Card";
 const Home = () => {
   const [search, setSearch] = useState("");
   const dispatch = useAppDispatch();
-  const { loading, error, productsList,favorites } = useAppSelector(
+  const { loading, error, productsList, favorites } = useAppSelector(
     (state) => state.products
   );
 
@@ -53,11 +54,14 @@ const Home = () => {
     setSearch(e.target.value);
   };
 
-  const handleAdd = (product:Product) => {
-    if(favorites.filter(item => item.id === product.id).length === 0){
-      dispatch(addFavorites(product))
+  const handleAdd = (product: Product) => {
+    if (favorites.filter((item) => item.id === product.id).length === 0) {
+      dispatch(addFavorites(product));
+      toastSuccessNotify("Product added favorites");
+    } else {
+      toastWarnNotify("Already added to favorites!");
     }
-  }
+  };
 
   // const handleAdd:VoidFunc = (product) => {
   //   if(favorites.filter(item => item.id === product.id).length === 0){
@@ -83,7 +87,12 @@ const Home = () => {
       ) : (
         <div className="flex justify-center items-center flex-wrap gap-5 p-5">
           {productsList.map((item) => (
-            <Card key={item.id} text="Add to favorites" item={item} handleFunc={handleAdd} />
+            <Card
+              key={item.id}
+              text="Add to favorites"
+              item={item}
+              handleFunc={handleAdd}
+            />
           ))}
         </div>
       )}

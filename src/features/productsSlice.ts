@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../models/models";
 
-
 //* models.ts Global
 // export interface Product {
 //   id: number;
@@ -62,7 +61,12 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { fetchStart, getSuccessProduct, addFavorites, fetchFail,removeFavorites } =
-  productsSlice.actions;
+export const {
+  fetchStart,
+  getSuccessProduct,
+  addFavorites,
+  fetchFail,
+  removeFavorites,
+} = productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;

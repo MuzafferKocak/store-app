@@ -5,20 +5,21 @@ import FavoritesPages from "./pages/FavoritesPages";
 import Navbar from "./components/Navbar";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import { ToastContainer, Zoom } from "react-toastify";
 
 function App() {
   return (
     <div className="bg-green-200 min-h-screen">
       <Provider store={store}>
-      <BrowserRouter>
-      <Navbar/>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/favorites" element={<FavoritesPages />}></Route>
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/favorites" element={<FavoritesPages />}></Route>
+          </Routes>
+        </BrowserRouter>
       </Provider>
-      
+      <ToastContainer transition={Zoom} />
     </div>
   );
 }
